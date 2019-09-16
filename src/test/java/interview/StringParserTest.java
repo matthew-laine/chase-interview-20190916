@@ -42,4 +42,11 @@ public class StringParserTest {
 		assertThat(frequencies.get("FOO"), is(1));
 		assertThat(frequencies.get("BAR"), is(1));
 	}
+	
+	@Test
+	public void countWordFrequencyOfFooBarFooFooBarShouldReturnMapContainingFoo3AndBar2 () {
+		Map<String, Integer> frequencies = underTest.countWordFrequency("Foo Bar foo FOO bar");
+		assertThat(frequencies.get("FOO"), is(3));
+		assertThat(frequencies.get("BAR"), is(2));
+	}
 }
