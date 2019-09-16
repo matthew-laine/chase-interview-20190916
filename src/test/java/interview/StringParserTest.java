@@ -38,6 +38,8 @@ public class StringParserTest {
 	
 	@Test
 	public void countWordFrequencyOfFooBarShouldReturnMapContainingFoo1AndBar1 () {
-		
+		Map<String, Integer> frequencies = underTest.countWordFrequency("Foo Bar");
+		assertThat(frequencies.get("FOO"), is(1));
+		assertThat(frequencies.get("BAR"), is(1));
 	}
 }

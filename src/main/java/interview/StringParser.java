@@ -14,9 +14,18 @@ public class StringParser {
 		 * will be done in Theta(1) time. 
 		 */
 		
+		
+		// Capitalize String and split with space as delimiter
+		// Needed to make second test pass
+		String capitalized = string.toUpperCase();
+		String[] words = capitalized.split(" ");
+		
 		Map<String, Integer> wordsAndFrequencies = new HashMap<String, Integer>();
-		// Make first test pass.
-		wordsAndFrequencies.put("FOO", 1);
+		
+		// Write enough code to get second test to pass
+		for (String word : words) {
+			wordsAndFrequencies.put(word, 1);
+		}
 		return wordsAndFrequencies;
 	}
 	
