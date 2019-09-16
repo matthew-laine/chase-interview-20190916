@@ -20,6 +20,7 @@ public class StringParserTest {
 	 */
 	
 	StringParser underTest;
+	Map<String, Integer> frequencies;
 	@Before
 	public void setup () {
 		underTest = new StringParser();
@@ -32,20 +33,20 @@ public class StringParserTest {
 		 * with the key being every unique capitalized word in the string
 		 * and the value being its frequency.
 		 */
-		Map<String, Integer> fooFrequency = underTest.countWordFrequency("Foo");
-		assertThat(fooFrequency.get("FOO"), is(1));
+		frequencies = underTest.countWordFrequency("Foo");
+		assertThat(frequencies.get("FOO"), is(1));
 	}
 	
 	@Test
 	public void countWordFrequencyOfFooBarShouldReturnMapContainingFoo1AndBar1 () {
-		Map<String, Integer> frequencies = underTest.countWordFrequency("Foo Bar");
+		frequencies = underTest.countWordFrequency("Foo Bar");
 		assertThat(frequencies.get("FOO"), is(1));
 		assertThat(frequencies.get("BAR"), is(1));
 	}
 	
 	@Test
 	public void countWordFrequencyOfFooBarFooFooBarShouldReturnMapContainingFoo3AndBar2 () {
-		Map<String, Integer> frequencies = underTest.countWordFrequency("Foo Bar foo FOO bar");
+		frequencies = underTest.countWordFrequency("Foo Bar foo FOO bar");
 		assertThat(frequencies.get("FOO"), is(3));
 		assertThat(frequencies.get("BAR"), is(2));
 	}
