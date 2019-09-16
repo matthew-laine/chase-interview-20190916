@@ -1,5 +1,10 @@
 package interview;
 
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.is;
+
+import java.util.Map;
+
 import org.junit.Test;
 
 public class StringParserTest {
@@ -16,5 +21,12 @@ public class StringParserTest {
 	@Test
 	public void countWordFrequencyOfFooShouldReturnFoo1 () {
 		StringParser underTest = new StringParser();
+		/*
+		 * The basic idea here is to insert or modify a Key/Value pair
+		 * with the key being every unique capitalized word in the string
+		 * and the value being its frequency.
+		 */
+		Map<String, Integer> fooFrequency = underTest.countWordFrequency("Foo");
+		assertThat(fooFrequency.get("FOO"), is(1));
 	}
 }
