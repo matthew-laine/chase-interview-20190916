@@ -38,6 +38,6 @@ public class StringParserTest {
 	
 	@Test
 	public void countWordFrequencyOfFooBarShouldReturnMapContainingFoo1AndBar1 () {
-		StringParser underTest = new StringParser();
+		
 	}
 }
