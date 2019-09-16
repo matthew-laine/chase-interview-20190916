@@ -33,9 +33,16 @@ public class StringParser {
 	}
 
 	private String[] capitalizeAndSplit(String string) {
-		// Capitalize String and split with space as delimiter
+		/*
+		 * Having only " " as a delimiter is very limiting, so we change the regular
+		 * expression from " " to "([.,!?:;'\"-]|\\s)+" to account for increased white
+		 * space or other punctuation characters as delimiters. This change is to cause
+		 * the fourth test to pass, which is a specification I added to the project
+		 * because it allows for a more appropriate word count to be applied to more
+		 * complex bodies of text.
+		 */
 		String capitalized = string.toUpperCase();
-		String[] words = capitalized.split(" ");
+		String[] words = capitalized.split("([.,!?:;'\"-]|\\s)+");
 		return words;
 	}
 
