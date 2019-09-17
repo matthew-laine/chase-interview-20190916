@@ -23,15 +23,13 @@ public class AddingPairFinderTest {
 	@Test
 	public void oneAndTwoShouldNotAddUpToFourInsteadShouldReturnNegOneNegOne() {
 		List<int[]> pairs = underTest.getPairs(oneTwo, 4);
-		assertThat(pairs.get(0)[0], is(-1));
-		assertThat(pairs.get(0)[1], is(-1));
+		assertThatPairContainsValues(pairs, 0, -1, -1);		
 	}
 
 	@Test
 	public void oneAndTwoShouldAddUpToThreeShouldReturnZeroOne() {
 		List<int[]> pairs = underTest.getPairs(oneTwo, 3);
-		assertThat(pairs.get(0)[0], is(0));
-		assertThat(pairs.get(0)[1], is(1));
+		assertThatPairContainsValues(pairs, 0, 0, 1);
 	}
 
 	@Test
@@ -42,10 +40,15 @@ public class AddingPairFinderTest {
 		 * pair {1,3} will be made when you hit element 3 of the array, and the second
 		 * pair {2,4} will be made when you hit element 4 of the array.
 		 */
-		assertThat(pairs.get(0)[0], is(1));
-		assertThat(pairs.get(0)[1], is(3));
-		assertThat(pairs.get(1)[0], is(0));
-		assertThat(pairs.get(1)[1], is(4));
+		assertThatPairContainsValues(pairs, 0, 1, 3);
+		assertThatPairContainsValues(pairs, 1, 0, 4);
 
+	}
+	
+	// Extract method to make writing assertions easier
+	// Checks to see whether an int[] pair at certain index of list contains value0 and value1
+	private void assertThatPairContainsValues(List<int[]> pairs, int index, int value0, int value1) {
+		assertThat(pairs.get(index)[0], is(value0));
+		assertThat(pairs.get(index)[1], is(value1));
 	}
 }
