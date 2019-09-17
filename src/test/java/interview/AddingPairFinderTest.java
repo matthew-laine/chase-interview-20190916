@@ -22,16 +22,16 @@ public class AddingPairFinderTest {
 
 	@Test
 	public void oneAndTwoShouldNotAddUpToFourInsteadShouldReturnNegOneNegOne() {
-		int[] pair = underTest.getPair(oneTwo, 4);
-		assertThat(pair[0], is(-1));
-		assertThat(pair[1], is(-1));
+		List<int[]> pairs = underTest.getPairs(oneTwo, 4);
+		assertThat(pairs.get(0)[0], is(-1));
+		assertThat(pairs.get(0)[1], is(-1));
 	}
 
 	@Test
 	public void oneAndTwoShouldAddUpToThreeShouldReturnZeroOne() {
-		int[] pair = underTest.getPair(oneTwo, 3);
-		assertThat(pair[0], is(0));
-		assertThat(pair[1], is(1));
+		List<int[]> pairs = underTest.getPairs(oneTwo, 3);
+		assertThat(pairs.get(0)[0], is(0));
+		assertThat(pairs.get(0)[1], is(1));
 	}
 
 	@Test
