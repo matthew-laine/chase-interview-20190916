@@ -23,8 +23,8 @@ public class AddingPairFinder {
 		Map<Integer, Integer> neededNumbers = new HashMap<Integer, Integer>();
 
 		for (int i = 0; i < input.length; i++) {
-			if (neededNumbers.containsKey(input[i])) {
-				int[] numberPair = {neededNumbers.get(input[i]), i};
+			if (numberComplementsAPreviousNumber(input, i, neededNumbers)) {
+				int[] numberPair = makeNumberPair(input, i, neededNumbers);
 				return numberPair;
 			}
 			else {
@@ -32,6 +32,15 @@ public class AddingPairFinder {
 			}
 		}
 		return pairDoesNotExist;
+	}
+
+	private int[] makeNumberPair(int[] input, int i, Map<Integer, Integer> neededNumbers) {
+		int[] numberPair = {neededNumbers.get(input[i]), i};
+		return numberPair;
+	}
+
+	private boolean numberComplementsAPreviousNumber(int[] input, int i, Map<Integer, Integer> neededNumbers) {
+		return neededNumbers.containsKey(input[i]);
 	}
 
 }
